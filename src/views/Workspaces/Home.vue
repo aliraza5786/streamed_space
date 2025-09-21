@@ -85,7 +85,7 @@ import eduIcon from "../../assets/icons/education.svg";
 import businessIcon from "../../assets/icons/business.svg";
 import intertainmentIcon from "../../assets/icons/entertainment.svg";
 import financeIcon from "../../assets/icons/Finance.svg";
-import medicalIcon from "../../assets/icons/medical.svg";
+import medicalIcon from "../../assets/icons/Medical.svg";
 import drinkIcon from "../../assets/icons/drink.svg";
 import gymIcon from "../../assets/icons/gym.svg";
 // import Dropdown from "../../components/ui/Dropdown.vue";
