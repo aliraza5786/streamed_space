@@ -100,10 +100,21 @@ const isFormValid = computed(() => !emailError.value && !passwordError.value);
 const { mutate, isPending } = useMutation({
   mutationFn: login,
   onSuccess: (data) => {
-    localStorage.setItem('token', data?.data?.token); // adapt if token key is different
+    console.log('Login success response:', data);
+    const token = data?.data?.token || data?.token || data?.access_token;
+    if (token) {
+      localStorage.setItem('token', token);
+      console.log('Token stored:', token);
+    } else {
+      console.error('No token found in response:', data);
+      errorMessage.value = 'Login succeeded but no authentication token received.';
+      return;
+    }
     router.push('/');
   },
   onError: (err: any) => {
+    console.error('Login error:', err);
+    console.error('Error response:', err?.response?.data);
     errorMessage.value = err?.response?.data?.message || 'Login failed. Please try again.';
   },
 });

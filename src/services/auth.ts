@@ -1,7 +1,15 @@
 import api from "../libs/api";
 
-export const login = (payload: { u_email: string; u_password: string }) =>
-    api.post("/auth/login", payload).then((res) => res.data);
+export const login = (payload: { u_email: string; u_password: string }) => {
+  console.log('Login request payload:', payload);
+  return api.post("/auth/login", payload).then((res) => {
+    console.log('Login response:', res.data);
+    return res.data;
+  }).catch((err) => {
+    console.error('Login service error:', err);
+    throw err;
+  });
+};
   
 export const register = (payload: {
   u_full_name: string;

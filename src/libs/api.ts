@@ -16,7 +16,12 @@ export const api: AxiosInstance = axios.create({
 /** Auth token injector (kept from your version) */
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token')
-  if (token) config.headers.Authorization = `Bearer ${token}`
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+    console.log('Request with token:', token.substring(0, 20) + '...')
+  } else {
+    console.log('No token found for request')
+  }
   return config
 })
 
@@ -25,6 +30,13 @@ api.interceptors.response.use(
   (r) => r,
   (err: AxiosError) => {
     // central place to log or transform errors
+    console.error('API Error:', {
+      status: err.response?.status,
+      statusText: err.response?.statusText,
+      data: err.response?.data,
+      url: err.config?.url,
+      method: err.config?.method
+    });
     return Promise.reject(err)
   }
 )

@@ -1,4 +1,6 @@
 // Simulated auth store
 export const isAuthenticated = () => {
-  return !!localStorage.getItem("token"); // or use Pinia later
+  const token = localStorage.getItem("token");
+  console.log('Checking authentication, token exists:', !!token);
+  return !!token;
 };
