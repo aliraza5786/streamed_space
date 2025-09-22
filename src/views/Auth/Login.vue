@@ -25,21 +25,35 @@
             <hr class="text-border w-full h-[1px]" />
           </div>
 
+          <!-- Social Login Buttons -->
+          <div class="flex gap-3 mt-4">
+            <button 
+              @click="handleGoogleLogin"
+              class="flex-1 group relative overflow-hidden bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-xl px-4 py-3 transition-all duration-200 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            >
+              <div class="flex items-center justify-center gap-3">
+                <div class="relative">
+                  <img src="../../assets/icons/google.svg" alt="Google" class="w-5 h-5 transition-transform group-hover:scale-110" />
+                </div>
+                <span class="text-sm font-medium text-gray-700 group-hover:text-gray-900">Google</span>
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-r from-blue-50 to-red-50 opacity-0 group-hover:opacity-20 transition-opacity duration-200"></div>
+            </button>
+
+            <button 
+              @click="handleAppleLogin"
+              class="flex-1 group relative overflow-hidden bg-black hover:bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 transition-all duration-200 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+            >
+              <div class="flex items-center justify-center gap-3">
+                <div class="relative">
+                  <FontAwesomeIcon :icon="['fab', 'apple']" class="text-white text-lg transition-transform group-hover:scale-110" />
+                </div>
+                <span class="text-sm font-medium text-white">Apple</span>
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-r from-gray-700 to-gray-600 opacity-0 group-hover:opacity-30 transition-opacity duration-200"></div>
+            </button>
+          </div>
         </form>
-        <div class="flex gap-3 mt-3">
-          <Button variant="secondary" size="lg" :block="true" @click="handleGoogleLogin">
-            <div class="flex items-center gap-2">
-              <img src="../../assets/icons/google.svg" alt="google" /> Google
-            </div>
-          </Button>
-
-          <Button variant="secondary" size="lg" :block="true" @click="handleAppleLogin">
-            <div class="flex items-center gap-2">
-             <FontAwesomeIcon  :icon="['fab', 'apple']" class="text-lg" /> Apple
-            </div>
-          </Button>
-
-        </div>
 
         <p class="text-sm font-medium text-text-secondary text-center mt-6">
           By signing in, you agree to the
